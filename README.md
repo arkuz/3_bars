@@ -1,6 +1,7 @@
 # Ближайшие бары
 
-[FIXME. Здесь будет описание проекта]
+Учебный проект. Код обрабатывает список баров в формате json и определяет большой и маленький бары по посадочным местам, а так же самый ближайший.
+При запуске необходимо вручную ввести долготу и широту вашего местоположения.
 
 # Как запустить
 
@@ -10,8 +11,13 @@
 
 ```bash
 
-$ python bars.py # possibly requires call of python3 executive instead of just python
-# FIXME вывести пример ответа скрипта
+$ python bars.py 
+
+Input your longitude: 35
+Input your latitude: 56
+The bar "Спорт бар «Красная машина»" has MAX seats places -  450
+The bar "БАР. СОКИ" has MIN seats places - 0
+The nearest bar is "Staropramen" at a distance - 2.0237072147967887
 
 ```
 
