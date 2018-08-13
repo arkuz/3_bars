@@ -33,6 +33,28 @@ def find_max_bar(bars):
         print(BARS_NONE_MSG)
 
 
+def find_max_bar_easy(bars):
+    new_bars = []
+    if bars is not None:
+        for el in bars:
+            new_bars.append(el["places"])
+        max_bar = max(new_bars)
+        print("MAX seats places - " + str(max_bar))
+    else:
+        print(BARS_NONE_MSG)
+
+
+def find_min_bar_easy(bars):
+    new_bars = []
+    if bars is not None:
+        for el in bars:
+            new_bars.append(el["places"])
+        min_bar = min(new_bars)
+        print("MIN seats places - " + str(min_bar))
+    else:
+        print(BARS_NONE_MSG)
+
+
 def find_min_bar(bars):
     if bars is not None:
         current_el = bars[0]["places"]
@@ -79,8 +101,14 @@ if __name__ == '__main__':
 
         json_bars = load_from_JSON("bars.json")
         prepared_bars = prepare_bars(json_bars)
+
         find_max_bar(prepared_bars)
         find_min_bar(prepared_bars)
+
+        find_max_bar_easy(prepared_bars)
+        find_min_bar_easy(prepared_bars)
+
         find_near_bar(prepared_bars, longitude, latitude)
+
     except ValueError:
         print("Incorrect input. Enter a number.")
