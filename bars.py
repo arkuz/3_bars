@@ -15,8 +15,8 @@ def prepare_bars(bars):
                          "longitude": current_el_coord[0],
                          "latitude": current_el_coord[1]}
         places.append(current_place)
-        if len(places) == 0:
-            return None
+    if not places:
+        return None
     return places
 
 
