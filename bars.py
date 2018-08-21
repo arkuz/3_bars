@@ -1,5 +1,13 @@
 from data_loaders import load_from_JSON
 from math import sqrt, pow
+import argparse
+import os
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("file", help="Path of JSON file")
+args = parser.parse_args()
+bars_file_path = os.path.abspath(args.file)
 
 
 def get_find_key():
@@ -29,13 +37,14 @@ def find_near_bar(bars, longitude, latitude):
 
 if __name__ == '__main__':
     try:
+        print(bars_file_path)
         #longitude = float(input("Input your longitude: "))
         #latitude = float(input("Input your latitude: "))
 
         longitude = 5
         latitude = 5
 
-        bars = load_from_JSON("bars.json")
+        bars = load_from_JSON(bars_file_path)
 
         print(find_max_bar(bars))
         print(find_min_bar(bars))
