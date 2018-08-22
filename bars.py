@@ -35,20 +35,32 @@ def find_near_bar(bars, longitude, latitude):
         bar["distantion"] = calc_distantion_between_points(x1, y1, x2, y2)
     return min(bars["features"], key=lambda x: x["distantion"])
 
+
 if __name__ == '__main__':
     try:
-        print(bars_file_path)
-        #longitude = float(input("Input your longitude: "))
-        #latitude = float(input("Input your latitude: "))
-
-        longitude = 5
-        latitude = 5
-
-        bars = load_from_JSON(bars_file_path)
-
-        print(find_max_bar(bars))
-        print(find_min_bar(bars))
-        print(find_near_bar(bars, longitude, latitude)["distantion"] )
-
+        longitude = float(input("Input your longitude: "))
+        latitude = float(input("Input your latitude: "))
     except ValueError:
         print("Incorrect input. Enter a number.")
+        exit()
+
+    bars = load_from_JSON(bars_file_path)
+    if bars is None:
+        print("Load error. JSON file is incorrect.")
+        exit()
+
+    max_bar = find_max_bar(bars)
+    min_bar = find_min_bar(bars)
+    near_bar = find_near_bar(bars, longitude, latitude)
+
+    print("The biggest bar is '{0}' - {1} places.".format(
+        max_bar["properties"]["Attributes"]["Name"],
+        max_bar["properties"]["Attributes"]["SeatsCount"]))
+
+    print("The smalest bar is '{0}' - {1} places.".format(
+        min_bar["properties"]["Attributes"]["Name"],
+        min_bar["properties"]["Attributes"]["SeatsCount"]))
+
+    print("The nearest bar is '{0}', distantion - {1:.2f}.".format(
+        near_bar["properties"]["Attributes"]["Name"],
+        near_bar["distantion"]))

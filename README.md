@@ -3,6 +3,12 @@
 Учебный проект. Код обрабатывает список баров в формате json и определяет большой и маленький бары по посадочным местам, а так же самый ближайший.
 При запуске необходимо вручную ввести долготу и широту вашего местоположения.
 
+На сайте [data.mos.ru](https://data.mos.ru/) есть список московских баров. Его можно скачать в формате JSON. Для этого нужно:
+
+1. зарегистрироваться на сайте и получить ключ API;
+2. скачать файл по ссылке вида ```https://apidata.mos.ru/v1/features/1796?api_key={place_your_API_key_here}```.
+А можно не тратить на это время и воспользоваться [ранее скачанным файлом](https://devman.org/fshare/1503831681/4/).
+
 # Как запустить
 
 Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
@@ -11,13 +17,13 @@
 
 ```bash
 
-$ python bars.py 
+$ python3 bars.py bars.json
 
-Input your longitude: 35
-Input your latitude: 56
-The bar "Спорт бар «Красная машина»" has MAX seats places -  450
-The bar "БАР. СОКИ" has MIN seats places - 0
-The nearest bar is "Staropramen" at a distance - 2.0237072147967887
+Input your longitude: 25
+Input your latitude: 45
+The biggest bar is 'Спорт бар «Красная машина»' - 450 places.
+The smalest bar is 'БАР. СОКИ' - 0 places.
+The nearest bar is 'Staropramen', distantion - 15.74.
 
 ```
 
