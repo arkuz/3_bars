@@ -26,12 +26,7 @@ def calc_distantion_between_points(x1, y1, x2, y2):
 
 
 def find_near_bar(bars, longitude, latitude):
-    return min(bars,
-               key=lambda dist: calc_distantion_between_points(
-                   longitude,
-                   latitude,
-                   float(dist["geometry"]["coordinates"][0]),
-                   float(dist["geometry"]["coordinates"][1])))
+    return min(bars, key=get_distantion(longitude, latitude))
 
 
 def print_bar_info(bar, description_text=""):
