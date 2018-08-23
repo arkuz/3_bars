@@ -4,8 +4,8 @@ import json
 def load_from_JSON(filename):
     with open(filename, 'r', encoding='utf-8') as file:
         try:
-            json_file = json.load(file)
-            return json_file
+            file_object = json.load(file)
+            return file_object
         except json.decoder.JSONDecodeError:
             return None
 
