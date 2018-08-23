@@ -15,8 +15,8 @@ def get_seats_count():
     return lambda bar: bar['properties']['Attributes']['SeatsCount']
 
 
-def get_distantion(longitude, latitude):
-    return lambda dist: calc_distantion_between_points(
+def get_distance(longitude, latitude):
+    return lambda dist: calc_distance_between_points(
         longitude,
         latitude,
         float(dist['geometry']['coordinates'][0]),
@@ -31,16 +31,16 @@ def find_min_bar(bars):
     return min(bars, key=get_seats_count())
 
 
-def calc_distantion_between_points(x1, y1, x2, y2):
+def calc_distance_between_points(x1, y1, x2, y2):
     return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2))
 
 
 def find_near_bar(bars, longitude, latitude):
-    return min(bars, key=get_distantion(longitude, latitude))
+    return min(bars, key=get_distance(longitude, latitude))
 
 
 def print_bar_info(bar, description_text=''):
-    print('{0} bar is \'{1}\' - {2} places.'.format(
+    print("{0} bar is '{1}' - {2} places.".format(
         description_text,
         bar['properties']['Attributes']['Name'],
         bar['properties']['Attributes']['SeatsCount']))
