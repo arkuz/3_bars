@@ -21,6 +21,7 @@ def get_distance(longitude, latitude):
         latitude,
         float(dist['geometry']['coordinates'][0]),
         float(dist['geometry']['coordinates'][1]))
+    # Не могу понять как это переделать?
 
 
 def find_max_bar(bars):
@@ -37,6 +38,7 @@ def calc_distance_between_points(x1, y1, x2, y2):
 
 def find_near_bar(bars, longitude, latitude):
     return min(bars, key=get_distance(longitude, latitude))
+    # Не могу понять как это переделать?
 
 
 def print_bar_info(bar, description_text=''):
