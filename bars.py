@@ -11,25 +11,24 @@ def create_arg_parser():
     return parser
 
 
-def get_seats_count():
-    return lambda bar: bar['properties']['Attributes']['SeatsCount']
+def get_seats_count(bar):
+    return bar['properties']['Attributes']['SeatsCount']
 
 
-def get_distance(longitude, latitude):
-    return lambda dist: calc_distance_between_points(
+def get_distance(bar, longitude, latitude):
+    return calc_distance_between_points(
         longitude,
         latitude,
-        float(dist['geometry']['coordinates'][0]),
-        float(dist['geometry']['coordinates'][1]))
-    # Не могу понять как это переделать?
+        float(bar['geometry']['coordinates'][0]),
+        float(bar['geometry']['coordinates'][1]))
 
 
 def find_max_bar(bars):
-    return max(bars, key=get_seats_count())
+    return max(bars, key=get_seats_count)
 
 
 def find_min_bar(bars):
-    return min(bars, key=get_seats_count())
+    return min(bars, key=get_seats_count)
 
 
 def calc_distance_between_points(x1, y1, x2, y2):
@@ -37,8 +36,7 @@ def calc_distance_between_points(x1, y1, x2, y2):
 
 
 def find_near_bar(bars, longitude, latitude):
-    return min(bars, key=get_distance(longitude, latitude))
-    # Не могу понять как это переделать?
+    return min(bars, key=lambda bar: get_distance(bar, longitude, latitude))
 
 
 def print_bar_info(bar, description_text=''):
